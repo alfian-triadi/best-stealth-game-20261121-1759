@@ -9,7 +9,7 @@
 // The program is deterministic: the same repository always writes
 // the same bytes, so the grader's two runs match byte for byte.
 
-import { cpSync, existsSync, lstatSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, lstatSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-game.ts';
@@ -58,8 +58,15 @@ function copyPlainTree(sourceDir: string, targetDir: string): void {
 
 /** Empty the output directory and lay the entry out in it. */
 function layOutEntry(outDir: string): void {
-  rmSync(outDir, { recursive: true, force: true });
+  // Empty the directory's contents WITHOUT removing the directory
+  // itself: the grader mounts /output as a volume, and removing a
+  // mount point fails (EBUSY) — the dev-phase grade run exited 1
+  // on exactly that. Deleting each child entry works on a mount
+  // point and on a plain directory alike.
   mkdirSync(outDir, { recursive: true });
+  for (const entry of readdirSync(outDir)) {
+    rmSync(join(outDir, entry), { recursive: true, force: true });
+  }
   copyPlainTree(join(REPO_ROOT, 'game'), join(outDir, 'game'));
   copyPlainTree(join(REPO_ROOT, 'screenshots'), join(outDir, 'screenshots'));
 }
