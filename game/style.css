@@ -1,0 +1,91 @@
+/* Ember Thief — page chrome around the canvas. The game itself is
+   drawn on the canvas; this file only frames it. */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #070d18;
+  color: #dfe9f5;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: flex;
+  justify-content: center;
+  padding: 18px 12px 28px;
+}
+
+.shell {
+  width: 960px;
+  max-width: 100%;
+}
+
+.hud {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 10px 4px;
+  font-size: 14px;
+}
+
+.hud-title {
+  font-family: Georgia, serif;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #ffb020;
+  font-size: 17px;
+}
+
+.hud-item { color: #b9c8dd; }
+
+.hud-suspicion {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.hud-suspicion-bar {
+  display: inline-block;
+  width: 130px;
+  height: 10px;
+  background: #1a2432;
+  border: 1px solid #31405a;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#hud-suspicion-fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #7ddb8a;
+}
+
+#game {
+  display: block;
+  width: 960px;
+  max-width: 100%;
+  height: auto;
+  background: #0d1b2a;
+  border: 1px solid #2b3a4a;
+  border-radius: 8px;
+}
+
+.hud-message {
+  min-height: 22px;
+  margin: 10px 4px 0;
+  color: #ffd27a;
+  font-size: 14px;
+}
+
+.help {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+  padding: 0 4px;
+  color: #7e90a8;
+  font-size: 13px;
+}
+
+.help b { color: #b9c8dd; }

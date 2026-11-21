@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Thief — a stealth game</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="shell">
+  <header class="hud">
+    <div class="hud-title">EMBER THIEF</div>
+    <div class="hud-item" id="hud-level">Level 1 — The Moonlit Garden</div>
+    <div class="hud-item" id="hud-shards">Embers 0/3</div>
+    <div class="hud-item" id="hud-pebbles">Pebbles 5</div>
+    <div class="hud-suspicion">
+      <span id="hud-suspicion-label">Unseen</span>
+      <span class="hud-suspicion-bar"><span id="hud-suspicion-fill"></span></span>
+    </div>
+    <div class="hud-item" id="hud-timer">0:00</div>
+  </header>
+  <canvas id="game" width="960" height="640"></canvas>
+  <p class="hud-message" id="hud-message">Press Enter to begin</p>
+  <footer class="help">
+    <span><b>WASD / arrows</b> move</span>
+    <span><b>Shift</b> sneak — slow and quiet</span>
+    <span><b>Click</b> throw a pebble to distract a guard</span>
+    <span><b>M</b> mute</span>
+    <span><b>R</b> retry level</span>
+  </footer>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
